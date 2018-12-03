@@ -22,7 +22,7 @@ services:
   mysql:
     image: mariadb
     volumes:
-      - ./src/mysql:/var/lib/mysql/data
+      - ./src/mysql/data:/var/lib/mysql
     environment:
       - MYSQL_RANDOM_ROOT_PASSWORD=TRUE
       - MYSQL_USER=developer
