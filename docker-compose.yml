@@ -1,10 +1,9 @@
 version: '2'
 services:
   web:
-    container_name: nginx
     image: nginx:alpine
-    ports:
-      - 80:80
+    # ports:
+    #   - 80:80
     depends_on: 
       - php
       - mysql
@@ -15,15 +14,15 @@ services:
     restart: always
 
   php:
-    container_name: php
     image: php:7.2-fpm-alpine
     volumes:
       - ./src/html:/var/www/html
     restart: always
 
   mysql:
-    container_name: mysql
     image: mariadb
+    volumes:
+      - ./src/mysql:/var/lib/mysql/data
     environment:
       - MYSQL_RANDOM_ROOT_PASSWORD=TRUE
       - MYSQL_USER=developer
